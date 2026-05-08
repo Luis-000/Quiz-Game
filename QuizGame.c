@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include <ctype.h>
+
+int main()
+{
+
+    // Quiz Game
+
+    char questions[][100] = {
+        "What is the largest planet in the SOlar System?",
+        "What is the Hottest Planet?",
+        "What Planet has the most Moons?",
+        "Is the Earth flat?"};
+
+    char options[][100] = {"A. Jupiter\nB. Saturn\nC. Uranus\nD. Neptune",
+                           "A. Mercury\nB. Venus\nC. Earth\nD. Mars",
+                           "A. Earth\nB. Mars\nC. Jupiter\nD. Saturn",
+                           "A. Yes\nB. No\nC. Maybe\nD. Sometimes"};
+
+    char answerKey[] = {'A', 'B', 'D', 'B'};
+
+    int questionCount = sizeof(questions) / sizeof(questions[0]);
+    char guess = '\0';
+    int score = 0;
+
+    printf("Quizz Game about Planets!\n");
+
+    for (int i = 0; i < questionCount; i++)
+    {
+        printf("\n%s\n", questions[i]);
+        printf("%s\n", options[i]);
+        printf("\nEnter your choice: ");
+        scanf(" %c", &guess);
+
+        guess = toupper(guess);
+
+        if (guess == answerKey[i])
+        {
+            printf("Correct\n");
+            score++;
+        }
+        else
+        {
+            printf("Wrong\n");
+        }
+    }
+
+    printf("\nFinal Score: %d out of %d Points\n", score, questionCount);
+
+    if (score == questionCount)
+    {
+        printf("\nMax score. Congratulations!!!");
+    }
+    else if (score == 0)
+    {
+        printf("Dumbass!!!");
+    }
+
+    return 0;
+}
